@@ -49,7 +49,7 @@ Sistema de gestión de libros desarrollado con **Angular 19** (standalone compon
 
 ```bash
 # Clonar repositorio
-git clone <tu-repositorio>
+git clone https://github.com/mautapiao/fullstack_S3.git
 
 # Instalar dependencias
 npm install
