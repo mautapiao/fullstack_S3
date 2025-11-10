@@ -1,0 +1,21 @@
+<!-- ===============================================================
+     Semana 3 - Indicadores de "smoke test" del servicio
+     =============================================================== 
+
+<h2>📚 Angular + Spring Boot (Semana 3)</h2>
+
+<p *ngIf="loading">Cargando libros desde el backend...</p>
+<p *ngIf="error" style="color:red">{{ error }}</p>
+<p *ngIf="!loading && !error">Libros recibidos: {{ libros.length }}</p>
+
+<!-- 👇 Dejamos el router-outlet preparado para las próximas vistas 
+<router-outlet />-->
+
+
+<!-- =============================================================
+     Semana 3 - Estructura principal
+     ============================================================= -->
+<div class="container">
+     <h1>📘 Angular + Spring Boot (Semana 3)</h1>
+     <router-outlet></router-outlet>
+</div>

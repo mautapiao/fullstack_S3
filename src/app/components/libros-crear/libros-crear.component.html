@@ -1,0 +1,83 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Encabezado -->
+            <div class="mb-4">
+                <h2 class="mb-2">📖 Crear Nuevo Libro</h2>
+                <p class="text-muted">Completa todos los campos para agregar un nuevo libro</p>
+            </div>
+
+            <!-- Formulario -->
+            <form (ngSubmit)="guardar()" class="card shadow-sm p-4">
+
+                <!-- Campo Título -->
+                <div class="mb-3">
+                    <label for="titulo" class="form-label fw-semibold">Título *</label>
+                    <input type="text" class="form-control" [class.is-invalid]="errores['titulo']" id="titulo"
+                        [(ngModel)]="libro.titulo" name="titulo" placeholder="Ej: Clean Code" required />
+                    <div class="invalid-feedback d-block" *ngIf="errores['titulo']">
+                        {{ errores['titulo'] }}
+                    </div>
+                </div>
+
+                <!-- Campo Autor -->
+                <div class="mb-3">
+                    <label for="autor" class="form-label fw-semibold">Autor *</label>
+                    <input type="text" class="form-control" [class.is-invalid]="errores['autor']" id="autor"
+                        [(ngModel)]="libro.autor" name="autor" placeholder="Ej: Robert C. Martin" required />
+                    <div class="invalid-feedback d-block" *ngIf="errores['autor']">
+                        {{ errores['autor'] }}
+                    </div>
+                </div>
+
+                <!-- Campo Género (Select) -->
+                <div class="mb-3">
+                    <label for="genero" class="form-label fw-semibold">Género *</label>
+                    <select class="form-select" [class.is-invalid]="errores['genero']" id="genero"
+                        [(ngModel)]="libro.genero" name="genero" required>
+                        <option value="">-- Selecciona un género --</option>
+                        <option *ngFor="let g of generos" [value]="g">{{ g }}</option>
+                    </select>
+                    <div class="invalid-feedback d-block" *ngIf="errores['genero']">
+                        {{ errores['genero'] }}
+                    </div>
+                </div>
+
+                <!-- Campo Año de Publicación -->
+                <div class="mb-4">
+                    <label for="anio" class="form-label fw-semibold">Año de Publicación *</label>
+                    <input type="number" class="form-control" [class.is-invalid]="errores['anioPublicacion']" id="anio"
+                        [(ngModel)]="libro.anioPublicacion" name="anioPublicacion" [min]="1000"
+                        [max]="2050" required />
+                    <div class="invalid-feedback d-block" *ngIf="errores['anioPublicacion']">
+                        {{ errores['anioPublicacion'] }}
+                    </div>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success flex-grow-1" [disabled]="loading">
+                        <span *ngIf="!loading">✅ Guardar Libro</span>
+                        <span *ngIf="loading">
+                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            Guardando...
+                        </span>
+                    </button>
+
+                    <button type="button" class="btn btn-secondary" (click)="limpiar()" [disabled]="loading">
+                        🔄 Limpiar
+                    </button>
+
+                    <button type="button" class="btn btn-outline-secondary" (click)="cancelar()" [disabled]="loading">
+                        ❌ Cancelar
+                    </button>
+                </div>
+            </form>
+
+            <!-- Información adicional -->
+            <div class="alert alert-info mt-4" role="alert">
+                <strong>ℹ️ Nota:</strong> Los campos marcados con * son obligatorios. 
+            </div>
+        </div>
+    </div>
+</div>
